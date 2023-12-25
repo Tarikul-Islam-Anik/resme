@@ -1,32 +1,43 @@
 {
-  "name": "resme",
-  "description": "",
+  "name": "nextjs-starter",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "turbo": "next dev --turbo",
-    "format": "prettier --write .",
-    "build": "next build",
+    "dev": "prisma generate && next dev",
+    "turbo": "prisma generate && next dev --turbo",
+    "build": "prisma generate && next build",
+    "build:analyze": "cross-env ANALYZE=true next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma": "prisma generate && prisma db push",
+    "format": "prettier --write --list-different .",
+    "format:check": "prettier --check .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "next": "14.0.4",
+    "next-auth": "^4.24.5",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@next-auth/prisma-adapter": "canary",
+    "@next/bundle-analyzer": "^14.0.4",
+    "@prisma/client": "^5.7.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
     "postcss": "^8",
     "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "prisma": "^5.7.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
-  }
+  },
+  "license": "MIT"
 }
