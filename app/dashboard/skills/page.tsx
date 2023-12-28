@@ -1,11 +1,13 @@
 import React from 'react';
+
 import { getServerSession } from 'next-auth';
 
 import { Box } from '@/components/layout/box';
 import prisma from '@/prisma';
 
-import SectionHeading from '../components/section-heading';
 import SkillsForm from './form';
+
+import SectionHeading from '../components/section-heading';
 
 async function getSkillData() {
   const session = await getServerSession();

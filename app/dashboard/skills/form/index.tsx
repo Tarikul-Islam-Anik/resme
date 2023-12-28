@@ -1,8 +1,11 @@
 'use client';
 
-import { useFieldArray, useForm } from 'react-hook-form';
-import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useFieldArray, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+
+import { Box } from '@/components/layout/box';
+import { Flex } from '@/components/layout/flex';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -14,11 +17,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Flex } from '@/components/layout/flex';
-import { toast } from 'sonner';
-import { Box } from '@/components/layout/box';
-import { SkillType, skillschema } from './schema';
+import { cn } from '@/lib/utils';
+
 import AddSkillInfo, { DeleteSkillInfo } from './action';
+import { skillschema, SkillType } from './schema';
 
 const SkillsForm = ({ skills }: { skills: string[] }) => {
   const form = useForm<SkillType>({

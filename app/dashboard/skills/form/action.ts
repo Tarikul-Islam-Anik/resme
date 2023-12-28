@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 
 import prisma from '@/prisma';
 
-import { SkillType, skillschema } from './schema';
+import { skillschema, SkillType } from './schema';
 
 export default async function AddSkillInfo(formData: SkillType) {
   const session = await getServerSession();
@@ -27,7 +27,7 @@ export default async function AddSkillInfo(formData: SkillType) {
       data: data,
     }));
 
-  revalidatePath('/dashboard/education');
+  revalidatePath('/dashboard/skills');
 }
 
 export async function DeleteSkillInfo(name: string) {
@@ -41,4 +41,5 @@ export async function DeleteSkillInfo(name: string) {
       },
     },
   });
+  revalidatePath('/dashboard/skills');
 }
