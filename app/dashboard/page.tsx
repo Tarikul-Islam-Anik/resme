@@ -31,8 +31,8 @@ const DashBoardPage = async () => {
   return (
     <Box className='space-y-6'>
       <SectionHeading
-        title='Dashboard'
-        description='Check your resume performance and manage your account.'
+        title='Analytics'
+        description='Check your resume performance.'
       />
       <Flex gap={4} direction='column' className='sm:flex-row'>
         <StatusCard
