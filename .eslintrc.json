@@ -1,37 +1,22 @@
 {
+  "root": true,
   "extends": [
     "next/core-web-vitals",
-    "prettier",
-    "next/core-web-vitals",
-    "turbo",
-    "prettier",
-    "plugin:tailwindcss/recommended"
+    "prettier"
   ],
   "plugins": [
-    "import",
-    "tailwindcss"
+    "import"
   ],
   "rules": {
-    "no-unused-vars": "warn",
-    "no-console": "warn",
-    "@next/next/no-html-link-for-pages": "off",
-    "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error",
-    "react/display-name": [
-      "off",
-      {
-        "ignoreTranspilerName": true
-      }
-    ],
     "sort-imports": [
-      "error",
+      "warn",
       {
         "ignoreCase": true,
         "ignoreDeclarationSort": true
       }
     ],
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": [
           [
@@ -64,24 +49,6 @@
           "order": "asc",
           "caseInsensitive": true
         }
-      }
-    ]
-  },
-  "settings": {
-    "tailwindcss": {
-      "callees": [
-        "cn",
-        "cva"
-      ],
-      "config": "tailwind.config.ts"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.ts",
-          "*.tsx"
-        ],
-        "parser": "@typescript-eslint/parser"
       }
     ]
   }
