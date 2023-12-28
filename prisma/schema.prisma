@@ -138,25 +138,16 @@ model Project {
 model Experience {
   company   String
   position  String
-  type      ExperienceType
+  type      String
   desc      String
-  start     DateTime
-  end       DateTime?
+  start     String
+  end       String?
   userEmail String
-  user      User           @relation(fields: [userEmail], references: [email], onDelete: Cascade)
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@id([company, userEmail])
   @@unique([userEmail])
   @@index([userEmail])
-}
-
-enum ExperienceType {
-  FULL_TIME
-  PART_TIME
-  CONTRACT
-  INTERNSHIP
-  TEMPORARY
-  OTHER
 }
