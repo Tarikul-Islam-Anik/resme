@@ -123,12 +123,13 @@ model Education {
 model Project {
   name      String
   desc      String
-  start     DateTime
-  end       DateTime?
+  website   String?
+  start     String
+  end       String?
   userEmail String
-  user      User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@id([name, userEmail])
   @@index([userEmail])
