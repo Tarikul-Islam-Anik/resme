@@ -53,7 +53,7 @@ interface DashboardLayoutProps {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <Container className='max-w-3xl p-9'>
-      <Flex direction='column'>
+      <Flex direction='column' mt={8}>
         <Box className='col-span-2 space-y-0.5'>
           <Heading size='2xl' weight='bold' className='tracking-tight'>
             Dashboard
