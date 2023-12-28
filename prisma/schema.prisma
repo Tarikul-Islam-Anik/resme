@@ -8,6 +8,7 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
+// NextAuth.js models
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -36,14 +37,23 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  email         String?   @unique
-  emailVerified DateTime?
+  username      String?        @unique
+  email         String?        @unique
+  emailVerified Boolean?       @default(false)
   password      String?
+  bio           String?
   image         String?
+  coverImage    String?
   accounts      Account[]
   sessions      Session[]
+  analytics     Analytics?
+  personalInfo  PersonalInfo[]
+  skills        Skill[]
+  educations    Education[]
+  projects      Project[]
+  experiences   Experience[]
 }
 
 model VerificationToken {
@@ -52,4 +62,100 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// Non-NextAuth.js models
+
+model Analytics {
+  id        String @id @default(cuid())
+  clicks    Int    @default(0)
+  downloads Int    @default(0)
+
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userEmail])
+  @@index([userEmail])
+}
+
+model PersonalInfo {
+  about      String?
+  address    String?
+  experience String?
+  country    String?
+  gender     String?
+  dob        String?
+  phone      String?
+  userEmail  String
+  user       User    @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@id([userEmail])
+  @@unique([userEmail])
+  @@index([userEmail])
+}
+
+model Skill {
+  name      String
+  userEmail String
+  user      User   @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@id([name, userEmail])
+  @@unique([userEmail])
+  @@index([userEmail])
+}
+
+model Education {
+  school    String
+  degree    String
+  field     String
+  grade     String
+  start     String
+  end       String?
+  userEmail String
+  user      User    @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@id([school, userEmail])
+  @@index([userEmail])
+}
+
+model Project {
+  name      String
+  desc      String
+  start     DateTime
+  end       DateTime?
+  userEmail String
+  user      User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@id([name, userEmail])
+  @@index([userEmail])
+}
+
+model Experience {
+  company   String
+  position  String
+  type      ExperienceType
+  desc      String
+  start     DateTime
+  end       DateTime?
+  userEmail String
+  user      User           @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@id([company, userEmail])
+  @@unique([userEmail])
+  @@index([userEmail])
+}
+
+enum ExperienceType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  TEMPORARY
+  OTHER
 }
