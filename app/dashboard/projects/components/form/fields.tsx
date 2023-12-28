@@ -10,9 +10,9 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 import { ProjectType } from './schema';
-import { Textarea } from '@/components/ui/textarea';
 
 const ProjectFormFields = ({ form }: { form: UseFormReturn<ProjectType> }) => {
   return (

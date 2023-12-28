@@ -10,9 +10,9 @@ import FormDialog from '@/components/shared/form-dialog';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 
+import AddProjectInfo from './action';
 import ProjectFormFields from './fields';
 import { projectSchema, ProjectType } from './schema';
-import AddProjectInfo from './action';
 
 const ProjectForm = () => {
   const [open, setOpen] = useState(false);

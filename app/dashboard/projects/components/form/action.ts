@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 
 import prisma from '@/prisma';
 
-import { ProjectType, projectSchema } from './schema';
+import { projectSchema, ProjectType } from './schema';
 
 export default async function AddProjectInfo(formData: ProjectType) {
   const session = await getServerSession();
@@ -25,5 +25,5 @@ export default async function AddProjectInfo(formData: ProjectType) {
       },
     },
   });
-  revalidatePath('/dashboard/education');
+  revalidatePath('/dashboard/projects');
 }
