@@ -1,3 +1,7 @@
+import Hero from './components/hero';
+
 export default function Home() {
-  return <main>Hello World</main>
+  return <Hero />;
 }
+
+Home.displayName = 'Home';
