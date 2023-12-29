@@ -36,21 +36,20 @@ const UserInfoCard = ({ informations }: { informations: PersonalInfo }) => {
             </DescriptionDetails>
           </Flex>
           <Flex justify='between'>
-            <DescriptionTerm>Address</DescriptionTerm>
-            <DescriptionDetails>{informations.address}</DescriptionDetails>
-          </Flex>
-          <Flex justify='between'>
-            <DescriptionTerm>Country</DescriptionTerm>
-            <DescriptionDetails>{informations.country}</DescriptionDetails>
-          </Flex>
-
-          <Flex justify='between'>
             <DescriptionTerm>Gender</DescriptionTerm>
             <DescriptionDetails>{informations.gender}</DescriptionDetails>
           </Flex>
           <Flex justify='between'>
             <DescriptionTerm>Date of Birth</DescriptionTerm>
             <DescriptionDetails>{informations.dob}</DescriptionDetails>
+          </Flex>{' '}
+          <Flex justify='between'>
+            <DescriptionTerm>Country</DescriptionTerm>
+            <DescriptionDetails>{informations.country}</DescriptionDetails>
+          </Flex>
+          <Flex justify='between'>
+            <DescriptionTerm>Address</DescriptionTerm>
+            <DescriptionDetails>{informations.address}</DescriptionDetails>
           </Flex>
         </DescriptionList>
       </CardContent>
@@ -71,6 +70,6 @@ const DescriptionTerm = ({ children }: { children: React.ReactNode }) => {
 
 const DescriptionDetails = ({ children }: { children: React.ReactNode }) => {
   return (
-    <dd className='font-medium'>{truncateString(children as string, 18)}</dd>
+    <dd className='font-medium'>{truncateString(children as string, 25)}</dd>
   );
 };
