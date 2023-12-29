@@ -1,7 +1,6 @@
 import { getServerSession } from 'next-auth';
 
 import { Box } from '@/components/layout/box';
-import Loader from '@/components/shared/loader';
 import prisma from '@/prisma';
 
 import ProfileForm from './form';
@@ -26,7 +25,7 @@ export default async function ProfilePage() {
         title='Profile'
         description='This information will be displayed publicly so be careful what you share.'
       />
-      {user ? <ProfileForm user={user} /> : <Loader />}
+      {user && <ProfileForm user={user} />}
     </Box>
   );
 }
