@@ -5,7 +5,6 @@ import { Bars2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-
 import { Flex } from '@/components/layout/flex';
 import Logo from '@/components/shared/logo';
 import { Strong } from '@/components/typography/strong';
