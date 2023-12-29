@@ -1,12 +1,7 @@
 {
   "root": true,
-  "extends": [
-    "next/core-web-vitals",
-    "prettier"
-  ],
-  "plugins": [
-    "import"
-  ],
+  "extends": ["next/core-web-vitals", "prettier"],
+  "plugins": ["import"],
   "rules": {
     "sort-imports": [
       "warn",
@@ -18,17 +13,7 @@
     "import/order": [
       "warn",
       {
-        "groups": [
-          [
-            "external",
-            "builtin"
-          ],
-          "internal",
-          [
-            "sibling"
-          ],
-          "index"
-        ],
+        "groups": [["external", "builtin"], "internal", ["sibling"], "index"],
         "pathGroups": [
           {
             "pattern": "react",
@@ -40,10 +25,7 @@
             "group": "internal"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "internal",
-          "react"
-        ],
+        "pathGroupsExcludedImportTypes": ["internal", "react"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
