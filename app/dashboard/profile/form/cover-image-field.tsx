@@ -89,6 +89,14 @@ const CoverImageField = ({
                     layout='responsive'
                     className='w-full rounded-xl'
                   />
+                  <Button
+                    variant='secondary'
+                    size='sm'
+                    className='absolute right-4 top-4'
+                    onClick={() => onChange('')}
+                  >
+                    Remove
+                  </Button>
                 </Box>
               )}
             </Flex>
