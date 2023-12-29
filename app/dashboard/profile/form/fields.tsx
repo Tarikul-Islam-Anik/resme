@@ -80,6 +80,23 @@ const ProfileFormFields = ({
           </FormItem>
         )}
       />
+      <FormField
+        control={form.control}
+        name='resumePdfDownloadLink'
+        render={({ field }) => (
+          <FormItem className='col-span-full'>
+            <FormLabel>Resume PDF Download Link</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormDescription>
+              You can upload your resume to Google Drive or any other cloud
+              hosting service and paste the shareable link here.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
       <ProfileImageField form={form} />
       <CoverImageField form={form} />
     </Grid>
