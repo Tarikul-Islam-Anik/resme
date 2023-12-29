@@ -1,4 +1,4 @@
-import { Box } from '@/components/layout/box';
+import { Section } from '@/components/layout/section';
 import { Heading } from '@/components/typography/heading';
 import { Text } from '@/components/typography/text';
 import { Separator } from '@/components/ui/separator';
@@ -11,7 +11,7 @@ const SectionHeading = ({
   description: string;
 }) => {
   return (
-    <Box>
+    <Section>
       <Heading as='h3' className='text-lg font-medium'>
         {title}
       </Heading>
@@ -19,7 +19,7 @@ const SectionHeading = ({
         {description}
       </Text>
       <Separator className='mt-6' />
-    </Box>
+    </Section>
   );
 };
 
