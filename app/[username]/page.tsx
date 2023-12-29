@@ -8,7 +8,7 @@ import prisma from '@/prisma';
 import Resume from './resume';
 import { UserData } from './type';
 
-async function getUserData(username: string) {
+export async function getUserData(username: string) {
   const user = await prisma.user.findUnique({
     where: {
       username,
