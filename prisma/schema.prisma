@@ -37,23 +37,25 @@ model Session {
 }
 
 model User {
-  id            String         @id @default(cuid())
-  name          String?
-  username      String?        @unique
-  email         String?        @unique
-  emailVerified Boolean?       @default(false)
-  password      String?
-  bio           String?
-  image         String?
-  coverImage    String?
-  accounts      Account[]
-  sessions      Session[]
-  analytics     Analytics?
-  personalInfo  PersonalInfo[]
-  skills        Skill[]
-  educations    Education[]
-  projects      Project[]
-  experiences   Experience[]
+  id                    String        @id @default(cuid())
+  name                  String?
+  username              String?       @unique
+  email                 String?       @unique
+  emailVerified         Boolean?      @default(false)
+  password              String?
+  bio                   String?
+  image                 String?
+  coverImage            String?
+  resumePdfDownloadLink String?
+  accounts              Account[]
+  sessions              Session[]
+  analytics             Analytics?
+  personalInfo          PersonalInfo?
+  skills                Skill[]
+  educations            Education[]
+  projects              Project[]
+  experiences           Experience[]
+  Language              Language[]
 }
 
 model VerificationToken {
@@ -88,11 +90,22 @@ model PersonalInfo {
   gender     String?
   dob        String?
   phone      String?
+  website    String?
   userEmail  String
   user       User    @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 
   @@id([userEmail])
   @@unique([userEmail])
+  @@index([userEmail])
+}
+
+model Language {
+  name        String
+  proficiency String
+  userEmail   String
+  user        User   @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+
+  @@id([name, userEmail])
   @@index([userEmail])
 }
 
@@ -102,7 +115,6 @@ model Skill {
   user      User   @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 
   @@id([name, userEmail])
-  @@unique([userEmail])
   @@index([userEmail])
 }
 
@@ -148,6 +160,5 @@ model Experience {
   updatedAt DateTime @updatedAt
 
   @@id([company, userEmail])
-  @@unique([userEmail])
   @@index([userEmail])
 }
