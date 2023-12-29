@@ -42,7 +42,7 @@ const PersonalInfoFormFields = ({
       />
       <FormField
         control={form.control}
-        name='address'
+        name='website'
         render={({ field }) => (
           <FormItem className='col-span-full'>
             <FormLabel className='capitalize'>{field.name}</FormLabel>
@@ -50,7 +50,7 @@ const PersonalInfoFormFields = ({
               <Input {...field} />
             </FormControl>
             <FormDescription>
-              Your address will be visible in the resume.
+              Your personal website or porfoilio link.
             </FormDescription>
             <FormMessage />
           </FormItem>
