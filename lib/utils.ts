@@ -15,6 +15,14 @@ export function getInitials(name?: string) {
     : '';
 }
 
+export function fallbackMessage(item: any, message?: string) {
+  return item || message || 'Not data provided';
+}
+
+export function truncateString(str: string, n: number) {
+  return str?.length > n ? str.slice(0, n - 1) + '...' : str;
+}
+
 const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`;
 const CLOUDINARY_UPLOAD_PRESET =
   process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
