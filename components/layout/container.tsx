@@ -16,13 +16,9 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
       <div
         {...containerProps}
         ref={forwardedRef}
-        className={cn('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', className)}
+        className={cn('mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8', className)}
       >
-        {asChild ? (
-          children
-        ) : (
-          <div className='mx-auto max-w-3xl'>{children}</div>
-        )}
+        {children}
       </div>
     );
   }
