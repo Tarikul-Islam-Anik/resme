@@ -39,7 +39,11 @@ const Header = () => {
             <Sheet>
               {pathname.includes('dashboard') ? (
                 <SheetTrigger asChild>
-                  <Button size='icon' variant='ghost'>
+                  <Button
+                    size='icon'
+                    variant='ghost'
+                    className='block lg:hidden'
+                  >
                     <Bars2Icon className='h-7 w-7' />
                   </Button>
                 </SheetTrigger>
