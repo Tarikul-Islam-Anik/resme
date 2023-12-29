@@ -58,6 +58,22 @@ const PersonalInfoFormFields = ({
       />
       <FormField
         control={form.control}
+        name='address'
+        render={({ field }) => (
+          <FormItem className='col-span-full'>
+            <FormLabel className='capitalize'>{field.name}</FormLabel>
+            <FormControl>
+              <Input {...field} />
+            </FormControl>
+            <FormDescription>
+              Your address will be visible in the resume.
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
         name='dob'
         render={({ field }) => (
           <FormItem className='col-span-full'>
