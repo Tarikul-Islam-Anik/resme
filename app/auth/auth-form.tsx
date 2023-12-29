@@ -31,23 +31,28 @@ const AuthForm = ({ method, setToggle }: AuthFormProps) => {
   const form = useForm<AuthSchemaType>({
     resolver: zodResolver(authSchema),
     defaultValues: {
+      name: '',
       email: '',
       password: '',
     },
     mode: 'onChange',
   });
 
-  async function onSubmit(formData: AuthSchemaType) {
+  function onSubmit(formData: AuthSchemaType) {
     if (method === 'signin') {
       signIn('credentials', {
         email: formData.email,
         password: formData.password,
         callbackUrl: '/dashboard',
-      }).then(() => setToggle((toggle) => !toggle));
+      });
+      console.log('clicked');
     } else {
       toast.promise(createUser(formData), {
         loading: 'Creating an account...',
-        success: 'Account created successfully. Please sign in.',
+        success: () => {
+          setToggle(true);
+          return 'Account created successfully. Please sign in';
+        },
         error: 'This email may already exist. Consider signing in.',
       });
     }
@@ -81,7 +86,7 @@ const AuthForm = ({ method, setToggle }: AuthFormProps) => {
                 <FormItem>
                   <FormLabel className='capitalize'>{field.name}</FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input {...field} type={item} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -89,7 +94,13 @@ const AuthForm = ({ method, setToggle }: AuthFormProps) => {
             />
           ))}
         </Grid>
-        <Button type='submit' className='mt-4 w-full'>
+        <Button
+          type='submit'
+          className='mt-4 w-full'
+          onClick={() => {
+            !form.getValues('name') && form.setValue('name', 'sigin');
+          }}
+        >
           {method === 'signin' ? 'Sign in' : 'Sign up'}
         </Button>
       </form>
