@@ -8,6 +8,7 @@ import { Text } from '@/components/typography/text';
 import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/site';
 
+import { dashboardNavItems } from './components/dashboard-navitems';
 import { SidebarNav } from './components/sidebar-nav';
 
 export const metadata: Metadata = {
@@ -15,48 +16,13 @@ export const metadata: Metadata = {
   description: 'Manage your account settings and edit your profile.',
 };
 
-const sidebarNavItems = [
-  {
-    title: 'Dashboard',
-    href: '/dashboard',
-  },
-  {
-    title: 'Analytics',
-    href: '/dashboard/analytics',
-  },
-  {
-    title: 'Profile',
-    href: '/dashboard/profile',
-  },
-  {
-    title: 'Personal Information',
-    href: '/dashboard/personal-information',
-  },
-  {
-    title: 'Educational Informations',
-    href: '/dashboard/education',
-  },
-  {
-    title: 'Projects',
-    href: '/dashboard/projects',
-  },
-  {
-    title: 'Skills',
-    href: '/dashboard/skills',
-  },
-  {
-    title: 'Experiences',
-    href: '/dashboard/experience',
-  },
-];
-
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <Container className='max-w-3xl p-9'>
+    <Container className='mt-4 max-w-3xl p-9 lg:mt-0'>
       <Flex direction='column' mt={8}>
         <Box className='col-span-2 space-y-0.5'>
           <Heading size='2xl' weight='bold' className='tracking-tight'>
@@ -66,14 +32,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             Manage your account settings and edit your profile.
           </Text>
         </Box>
-        <Separator className='my-8' />
+        <Separator className='mt-8 lg:my-8' />
         <Flex
           direction='column'
           justify='between'
           className='space-y-8 lg:flex-row lg:space-y-0'
         >
           <aside className='-mx-4'>
-            <SidebarNav items={sidebarNavItems} />
+            <SidebarNav items={dashboardNavItems} />
           </aside>
           <Box className='flex-1 lg:max-w-lg'>{children}</Box>
         </Flex>
