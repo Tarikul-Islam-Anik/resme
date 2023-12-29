@@ -21,6 +21,7 @@ const ProfileForm = ({ user }: { user: User }) => {
     bio: user.bio ?? '',
     image: user.image ?? '',
     coverImage: user.coverImage ?? '',
+    resumePdfDownloadLink: user.resumePdfDownloadLink ?? '',
   };
 
   const form = useForm<ProfileDataType>({
