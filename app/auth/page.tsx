@@ -11,14 +11,15 @@ import { Text } from '@/components/typography/text';
 import { Button } from '@/components/ui/button';
 
 import AuthForm from './auth-form';
+import Logo from '@/components/shared/logo';
 
 export default function AuthPage() {
   const [toggle, setToggle] = useState(true);
   return (
     <Container className='w-full max-w-sm'>
       <Box className='sm:mx-auto sm:w-full sm:max-w-sm'>
-        <span>Logo here</span>
-        <Heading align='center' size='2xl' weight='bold' className='mt-10'>
+        <Logo className='mx-auto h-12 w-12 rounded-md' />
+        <Heading align='center' size='2xl' weight='bold' className='mt-6'>
           {toggle ? 'Sign in to your account' : 'Create an account'}
         </Heading>
       </Box>
