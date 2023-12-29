@@ -5,9 +5,13 @@ import { Viewport } from 'next';
 import './globals.css';
 
 import { inter } from '@/app/fonts';
+import { Flex } from '@/components/layout/flex';
 import { Toaster } from '@/components/ui/sonner';
 import { siteConfig } from '@/config/site';
 import ContextProvider from '@/context/context-provider';
+
+import { Footer } from './components/footer';
+import Header from './components/header';
 
 export const metadata: Metadata = {
   title: 'Resme - Create Beautiful Resumes in Seconds!',
@@ -28,7 +32,16 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
         <ContextProvider>
-          <main>{children}</main>
+          <Flex
+            position='relative'
+            direction='column'
+            justify='between'
+            className='min-h-screen'
+          >
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </Flex>
         </ContextProvider>
         <Toaster />
       </body>
