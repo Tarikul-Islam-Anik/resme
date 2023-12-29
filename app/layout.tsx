@@ -44,6 +44,7 @@ export default function RootLayout({
           </Flex>
         </ContextProvider>
         <Toaster />
+        <script async src="https://cdn.splitbee.io/sb.js"/>
       </body>
     </html>
   );
