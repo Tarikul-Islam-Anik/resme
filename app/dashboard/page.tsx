@@ -1,57 +1,24 @@
 import React from 'react';
 
-import { Download, MousePointerClick } from 'lucide-react';
-import { getServerSession } from 'next-auth';
-
-import { Box } from '@/components/layout/box';
-import { Flex } from '@/components/layout/flex';
-import prisma from '@/prisma';
+import { Section } from '@/components/layout/section';
 
 import DeleteAccount from './components/delete-account';
 import SectionHeading from './components/section-heading';
-import StatusCard from './components/status-card';
+import SignoutButton from './components/signout-button';
+import ThemeSelect from './components/theme-select';
 
-async function getAnalytics() {
-  const session = await getServerSession();
-  return prisma.analytics.findMany({
-    where: {
-      userEmail: session?.user?.email!,
-    },
-    select: {
-      clicks: true,
-      downloads: true,
-    },
-  });
-}
 const DashBoardPage = async () => {
-  const analytics = await getAnalytics();
-
-  const formatNumber = (num: number) => new Intl.NumberFormat().format(num);
-
   return (
-    <Box className='space-y-6'>
+    <Section className='py-0'>
       <SectionHeading
-        title='Analytics'
-        description='Check your resume performance.'
+        title='Theme'
+        description='Change appearance based on your preferences.'
       />
-      <Flex gap={4} direction='column' className='sm:flex-row'>
-        <StatusCard
-          title='Total clicks'
-          value={analytics.length ? formatNumber(analytics[0].clicks) : 0}
-          icon={
-            <MousePointerClick className='roa h-5 w-5 text-muted-foreground' />
-          }
-          description='Lifetime views of your resume.'
-        />
-        <StatusCard
-          title='Total downloads'
-          value={analytics.length ? formatNumber(analytics[0].downloads) : 0}
-          icon={<Download className='h-5 w-5 text-muted-foreground' />}
-          description='People downloaded your resume.'
-        />
-      </Flex>
+      <ThemeSelect />
+      <SectionHeading title='Account' description='Manage your account.' />
       <DeleteAccount />
-    </Box>
+      <SignoutButton />
+    </Section>
   );
 };
 
