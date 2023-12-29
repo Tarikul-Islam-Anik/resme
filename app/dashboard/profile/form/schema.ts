@@ -41,6 +41,7 @@ export const profileSchema = z.object({
       message: 'Bio must not be longer than 101 characters.',
     })
     .optional(),
+  resumePdfDownloadLink: z.string().url().optional(),
   image: z.string().or(z.any()).optional(),
   coverImage: z.string().or(z.any()).optional(),
 });
