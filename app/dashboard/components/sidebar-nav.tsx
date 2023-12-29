@@ -35,7 +35,7 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
   return (
     <nav
       className={cn(
-        'flex flex-wrap justify-start lg:flex-col lg:space-y-1',
+        'hidden justify-start lg:flex lg:flex-col lg:space-y-1',
         className
       )}
       {...props}
