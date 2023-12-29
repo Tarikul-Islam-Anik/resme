@@ -40,12 +40,18 @@ const AuthForm = ({ method, setToggle }: AuthFormProps) => {
 
   function onSubmit(formData: AuthSchemaType) {
     if (method === 'signin') {
-      signIn('credentials', {
-        email: formData.email,
-        password: formData.password,
-        callbackUrl: '/dashboard',
-      });
-      console.log('clicked');
+      toast.promise(
+        signIn('credentials', {
+          email: formData.email,
+          password: formData.password,
+          callbackUrl: '/dashboard',
+        }),
+        {
+          loading: 'Signing in...',
+          success: 'Signed in successfully',
+          error: 'Incorrect email or password',
+        }
+      );
     } else {
       toast.promise(createUser(formData), {
         loading: 'Creating an account...',
