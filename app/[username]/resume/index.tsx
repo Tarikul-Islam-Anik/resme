@@ -31,8 +31,8 @@ export default function Resume({ userData }: { userData: UserData }) {
   ];
 
   return (
-    <Grid cols={1} className='mb-8 lg:grid-cols-3 lg:space-x-4'>
-      <Box mb={4} className='space-y-4 lg:ml-auto lg:w-72'>
+    <Grid cols={1} className='lg:grid-cols-3 lg:space-x-4'>
+      <Box mb={4} className='space-y-4 lg:mb-0 lg:ml-auto lg:w-full'>
         <UserMediaCard {...userData} />
         <UserInfoCard informations={personalInfo} />
         {skills.length ? <UserSkillSCard skills={skills} /> : null}
