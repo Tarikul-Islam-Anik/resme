@@ -3,6 +3,7 @@ import * as z from 'zod';
 export const personalInfoSchema = z.object({
   phone: z.string(),
   address: z.string(),
+  website: z.string(),
   dob: z.string().refine(
     (val) => {
       const date = new Date(val);
