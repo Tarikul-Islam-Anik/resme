@@ -31,7 +31,6 @@ import useMediaQuery from '@/hooks/use-media-query';
 
 import deleteUser from './action';
 
-
 interface DeleteAccountProps {
   children: React.ReactNode;
 }
