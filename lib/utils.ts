@@ -15,7 +15,10 @@ export function getInitials(name?: string) {
     : '';
 }
 
-export function fallbackMessage(item: any, message?: string) {
+export function fallbackMessage(
+  item: null | undefined | String,
+  message?: string
+) {
   return item || message || 'Not data provided';
 }
 
