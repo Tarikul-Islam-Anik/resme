@@ -8,12 +8,12 @@ import { buttonVariants } from '@/components/ui/button';
 
 import ActionBtn from './action-btn';
 
-import { getUserData } from '../[username]/page';
+import { getResumeData } from '../[username]/action';
 import Resume from '../[username]/resume';
 import { UserData } from '../[username]/type';
 
 export default async function Hero() {
-  const userData = (await getUserData('jcarter')) as UserData;
+  const userData = (await getResumeData('jcarter')) as UserData;
   return (
     <Box>
       <Box position='relative' pt={8} className='isolate'>
