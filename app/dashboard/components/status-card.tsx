@@ -25,7 +25,12 @@ const StatusCard = ({
         {icon}
       </CardHeader>
       <CardContent>
-        <Box className='text-2xl font-bold tabular-nums'>{value}</Box>
+        <Box className='text-2xl font-bold tabular-nums'>
+          {new Intl.NumberFormat('en-US', {
+            notation: 'compact',
+            compactDisplay: 'short',
+          }).format(parseInt(value as string))}
+        </Box>
         <Text className='text-xs text-muted-foreground'>{description}</Text>
       </CardContent>
     </Card>
