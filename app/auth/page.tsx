@@ -6,12 +6,12 @@ import { signIn } from 'next-auth/react';
 
 import { Box } from '@/components/layout/box';
 import { Container } from '@/components/layout/container';
+import Logo from '@/components/shared/logo';
 import { Heading } from '@/components/typography/heading';
 import { Text } from '@/components/typography/text';
 import { Button } from '@/components/ui/button';
 
 import AuthForm from './auth-form';
-import Logo from '@/components/shared/logo';
 
 export default function AuthPage() {
   const [toggle, setToggle] = useState(true);
