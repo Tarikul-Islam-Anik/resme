@@ -8,8 +8,11 @@ import { Text } from '@/components/typography/text';
 import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/site';
 
+import getUserData from './components/action';
 import { dashboardNavItems } from './components/dashboard-navitems';
+import ShareLink from './components/sharelink';
 import { SidebarNav } from './components/sidebar-nav';
+
 
 export const metadata: Metadata = {
   title: 'Dashboard | ' + siteConfig.name,
@@ -20,18 +23,24 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default async function DashboardLayout({
+  children,
+}: DashboardLayoutProps) {
+  const user = await getUserData();
   return (
     <Container className='mt-4 max-w-3xl p-9 lg:mt-0'>
       <Flex direction='column' mt={8}>
-        <Box className='col-span-2 space-y-0.5'>
-          <Heading size='2xl' weight='bold' className='tracking-tight'>
-            Dashboard
-          </Heading>
-          <Text as='p' className='text-muted-foreground'>
-            Manage your account settings and edit your profile.
-          </Text>
-        </Box>
+        <Flex align='center' justify='between'>
+          <Box className='space-y-0.5'>
+            <Heading size='2xl' weight='bold' className='tracking-tight'>
+              Dashboard
+            </Heading>
+            <Text as='p' className='text-muted-foreground'>
+              Manage your account settings and edit your profile.
+            </Text>
+          </Box>
+          <ShareLink link={user?.username!} />
+        </Flex>
         <Separator className='mt-8 lg:my-8' />
         <Flex
           direction='column'
