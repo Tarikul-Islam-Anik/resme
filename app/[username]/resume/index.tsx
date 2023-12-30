@@ -42,7 +42,7 @@ export default function Resume({ userData }: { userData: UserData }) {
           defaultValue='educations'
           className='mx-auto flex w-full flex-col items-center space-y-4'
         >
-          <UserAboutCard about={personalInfo.about} />
+          <UserAboutCard about={personalInfo?.about} />
           {tabsContent.map((tab) => (
             <TabsContent key={tab.name} value={tab.name} className='w-full'>
               {tab.component}
