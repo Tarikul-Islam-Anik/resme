@@ -5,22 +5,11 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import { siteConfig } from '@/config/site';
 import prisma from '@/prisma';
 
+import { getResumeData } from './action';
 import Resume from './resume';
 import { UserData } from './type';
 
-export async function getUserData(username: string) {
-  const user = await prisma.user.findUnique({
-    where: {
-      username,
-    },
-    include: {
-      personalInfo: true,
-      experiences: true,
-      educations: true,
-      skills: true,
-      projects: true,
-    },
-  });
+async function UpdateClicks(user: UserData) {
   await prisma.analytics.update({
     where: {
       userEmail: user?.email!,
@@ -31,7 +20,6 @@ export async function getUserData(username: string) {
       },
     },
   });
-  return user;
 }
 
 export async function generateMetadata(
@@ -57,8 +45,10 @@ export async function generateMetadata(
 }
 
 const ResumePage = async ({ params }: { params: { username: string } }) => {
-  const userData = (await getUserData(params.username)) as UserData;
-
+  const userData = (await getResumeData(params.username)) as UserData;
+  if (userData) {
+    UpdateClicks(userData);
+  }
   return userData && <Resume userData={userData} />;
 };
 
