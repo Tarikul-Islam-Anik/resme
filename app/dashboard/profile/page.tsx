@@ -1,20 +1,9 @@
-import { getServerSession } from 'next-auth';
-
 import { Box } from '@/components/layout/box';
-import prisma from '@/prisma';
 
 import ProfileForm from './form';
 
+import getUserData from '../components/action';
 import SectionHeading from '../components/section-heading';
-
-async function getUserData() {
-  const session = await getServerSession();
-  return prisma.user.findUnique({
-    where: {
-      email: session?.user?.email!,
-    },
-  });
-}
 
 export default async function ProfilePage() {
   const user = await getUserData();
