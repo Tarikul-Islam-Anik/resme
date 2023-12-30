@@ -13,6 +13,7 @@ export default async function createUser(formData: AuthSchemaType) {
 
   await prisma.user.create({
     data: {
+      username: validatedFields.data.email.split('@')[0],
       ...validatedFields.data,
     },
   });
