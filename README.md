@@ -6,6 +6,15 @@ Welcome to Resme, a free and user-friendly online resume builder that allows you
 
 Resme simplifies the process of resume creation by providing a seamless platform where users can quickly generate impressive resumes with ease. Whether you're a job seeker, a student, or a professional looking to update your resume, Resme has got you covered.
 
+<details>
+<summary>Here is a demo account for you to try out the app.</summary>
+
+|       Username        |       Password        |
+| :-------------------: | :-------------------: |
+| `jcarter@example.com` | `jcarter@example.com` |
+
+</details>
+
 ## Features
 
 - **User-Friendly Interface**: Intuitive design and easy-to-navigate interface for a seamless user experience.
