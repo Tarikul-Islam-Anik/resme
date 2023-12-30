@@ -19,7 +19,7 @@ const ShareLink = ({ link }: { link: string }) => {
     <TooltipProvider delayDuration={300}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant='outline' onClick={copyToClipboard}>
+          <Button variant='outline' onClick={copyToClipboard} disabled={!link}>
             <Text>Share link</Text>
           </Button>
         </TooltipTrigger>
