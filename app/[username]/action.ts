@@ -8,6 +8,7 @@ export async function getResumeData(username: string) {
       username,
     },
     include: {
+      analytics: true,
       personalInfo: true,
       experiences: true,
       educations: true,
