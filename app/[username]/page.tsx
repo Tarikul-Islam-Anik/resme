@@ -10,16 +10,25 @@ import Resume from './resume';
 import { UserData } from './type';
 
 async function UpdateClicks(user: UserData) {
-  await prisma.analytics.update({
-    where: {
-      userEmail: user?.email!,
-    },
-    data: {
-      clicks: {
-        increment: 1,
+  if (user?.analytics) {
+    await prisma.analytics.update({
+      where: {
+        userEmail: user?.email!,
       },
-    },
-  });
+      data: {
+        clicks: {
+          increment: 1,
+        },
+      },
+    });
+  } else {
+    await prisma.analytics.create({
+      data: {
+        userEmail: user?.email!,
+        clicks: 1,
+      },
+    });
+  }
 }
 
 export async function generateMetadata(
@@ -46,6 +55,7 @@ export async function generateMetadata(
 
 const ResumePage = async ({ params }: { params: { username: string } }) => {
   const userData = (await getResumeData(params.username)) as UserData;
+
   if (userData) {
     UpdateClicks(userData);
   }
